@@ -2114,10 +2114,10 @@ h1, h2, h3, h4, .brand-name {
 }
 
 /* ==========================================================================
-   LIGHT THEME OVERRIDES (Background: #F8FAFC, Primary: #1E3A8A, Secondary: #3B82F6, Text: #1F2937)
+   LIGHT THEME OVERRIDES (Background: #FFF5E6, Primary: #1E3A8A, Secondary: #3B82F6, Text: #1F2937)
    ========================================================================== */
 body {
-    background-color: #F8FAFC !important;
+    background-color: #FFF5E6 !important;
     color: #1F2937 !important;
 }
 
@@ -2283,7 +2283,7 @@ input:focus, select:focus, textarea:focus {
 
 /* Table Light Styles */
 .table th {
-    background-color: #F8FAFC !important;
+    background-color: #FFE6CC !important;
     color: #4B5563 !important;
     border-bottom: 2px solid rgba(0, 0, 0, 0.08) !important;
 }
@@ -2336,7 +2336,7 @@ input:focus, select:focus, textarea:focus {
 
 /* Authentication Page specific overrides */
 .auth-container {
-    background-color: #F8FAFC !important;
+    background-color: #FFF5E6 !important;
 }
 
 .auth-background {
@@ -2393,7 +2393,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .otp-input-container input {
-    background-color: #F8FAFC !important;
+    background-color: #FFF5E6 !important;
     border: 1px solid rgba(0, 0, 0, 0.12) !important;
     color: #10B981 !important;
 }
@@ -2409,7 +2409,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .social-btn:hover {
-    background: #F8FAFC !important;
+    background: #FFF5E6 !important;
 }
 
 /* Footer */
