@@ -2113,3 +2113,378 @@ h1, h2, h3, h4, .brand-name {
     letter-spacing: 0.5px;
 }
 
+/* ==========================================================================
+   LIGHT THEME OVERRIDES (Background: #F8FAFC, Primary: #1E3A8A, Secondary: #3B82F6, Text: #1F2937)
+   ========================================================================== */
+body {
+    background-color: #F8FAFC !important;
+    color: #1F2937 !important;
+}
+
+h1, h2, h3, h4, h5, h6, .brand-name, .header-title, .card-title {
+    color: #1F2937 !important;
+}
+
+/* Sidebar Light Style */
+.sidebar {
+    background-color: #FFFFFF !important;
+    border-right: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+.brand-name {
+    color: #1E3A8A !important;
+}
+
+.role-selector-card {
+    background: rgba(0, 0, 0, 0.02) !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.role-label {
+    color: #4B5563 !important;
+}
+
+.selector-toggle {
+    background-color: #F1F5F9 !important;
+}
+
+.toggle-btn {
+    color: #4B5563 !important;
+}
+
+.toggle-btn.active {
+    background-color: #FFFFFF !important;
+    color: #1E3A8A !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+}
+
+.nav-link {
+    color: #4B5563 !important;
+}
+
+.nav-link:hover {
+    background-color: rgba(30, 58, 138, 0.04) !important;
+    color: #1E3A8A !important;
+}
+
+.nav-link.active {
+    background: rgba(30, 58, 138, 0.08) !important;
+    color: #1E3A8A !important;
+    border-left: 3px solid #1E3A8A !important;
+}
+
+.user-profile-card {
+    border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+    background: rgba(0, 0, 0, 0.01) !important;
+}
+
+.user-name {
+    color: #1F2937 !important;
+}
+
+.user-role {
+    color: #4B5563 !important;
+}
+
+/* Header Light Style */
+.app-header {
+    background-color: #FFFFFF !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.status-indicator {
+    background: rgba(16, 185, 129, 0.1) !important;
+    border: 1px solid rgba(16, 185, 129, 0.2) !important;
+}
+
+.status-text {
+    color: #10B981 !important;
+}
+
+.notification-btn {
+    background-color: #F1F5F9 !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    color: #4B5563 !important;
+}
+
+/* Glass Cards to Clean Light Cards */
+.glass-card {
+    background: #FFFFFF !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
+    backdrop-filter: none !important;
+}
+
+.card-title {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+/* KPI Elements */
+.kpi-card {
+    background-color: #FFFFFF !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+}
+
+.kpi-value {
+    color: #1E3A8A !important;
+}
+
+.kpi-label {
+    color: #4B5563 !important;
+}
+
+/* Primary/Secondary Buttons */
+.btn-primary, .auth-btn {
+    background: #1E3A8A !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.2) !important;
+}
+
+.btn-primary:hover, .auth-btn:hover {
+    background: #1D4ED8 !important;
+}
+
+.btn-outline {
+    border: 1px solid #1E3A8A !important;
+    color: #1E3A8A !important;
+}
+
+.btn-outline:hover {
+    background-color: rgba(30, 58, 138, 0.05) !important;
+}
+
+/* Inputs and Forms */
+input[type="text"], input[type="password"], input[type="email"], input[type="tel"], select, textarea {
+    background-color: #FFFFFF !important;
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
+    color: #1F2937 !important;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #3B82F6 !important;
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.2) !important;
+    background-color: #FFFFFF !important;
+}
+
+.drop-zone {
+    border: 2px dashed rgba(30, 58, 138, 0.2) !important;
+    background: rgba(30, 58, 138, 0.02) !important;
+}
+
+.drop-zone:hover {
+    background: rgba(30, 58, 138, 0.05) !important;
+    border-color: #1E3A8A !important;
+}
+
+.drop-zone-prompt {
+    color: #4B5563 !important;
+}
+
+/* Table Light Styles */
+.table th {
+    background-color: #F8FAFC !important;
+    color: #4B5563 !important;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+.table td {
+    color: #1F2937 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.table tr:hover {
+    background-color: rgba(0, 0, 0, 0.01) !important;
+}
+
+/* Chatbot interface */
+.chatbot-container {
+    background-color: #FFFFFF !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+.chat-bubble.bot {
+    background-color: #F1F5F9 !important;
+    color: #1F2937 !important;
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+.chat-bubble.user {
+    background-color: #1E3A8A !important;
+    color: #FFFFFF !important;
+}
+
+.chat-input-area {
+    border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+    background-color: #FFFFFF !important;
+}
+
+/* Modals */
+.modal-card {
+    background: #FFFFFF !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+
+.modal-card h2 {
+    color: #1F2937 !important;
+}
+
+.modal-card p {
+    color: #4B5563 !important;
+}
+
+/* Authentication Page specific overrides */
+.auth-container {
+    background-color: #F8FAFC !important;
+}
+
+.auth-background {
+    background: radial-gradient(circle at 0% 0%, rgba(30, 58, 138, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(16, 185, 129, 0.05) 0%, transparent 50%) !important;
+}
+
+.auth-card {
+    background: #FFFFFF !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+
+.auth-header h2 {
+    color: #1E3A8A !important;
+}
+
+.auth-header p {
+    color: #4B5563 !important;
+}
+
+.auth-role-tabs {
+    background: #F1F5F9 !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.role-tab {
+    color: #4B5563 !important;
+}
+
+.role-tab.active {
+    background: #FFFFFF !important;
+    color: #1E3A8A !important;
+}
+
+.method-tab {
+    color: #4B5563 !important;
+}
+
+.method-tab.active {
+    color: #1E3A8A !important;
+    border-bottom-color: #1E3A8A !important;
+}
+
+.input-wrapper input {
+    background-color: #FFFFFF !important;
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
+    color: #1F2937 !important;
+}
+
+.input-wrapper input:focus {
+    border-color: #3B82F6 !important;
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.2) !important;
+}
+
+.otp-input-container input {
+    background-color: #F8FAFC !important;
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
+    color: #10B981 !important;
+}
+
+.otp-input-container input:focus {
+    border-color: #10B981 !important;
+}
+
+.social-btn {
+    background: #FFFFFF !important;
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
+    color: #1F2937 !important;
+}
+
+.social-btn:hover {
+    background: #F8FAFC !important;
+}
+
+/* Footer */
+.app-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+    color: #4B5563 !important;
+}
+
+/* General overrides for lists, details, text elements */
+.xai-list-container li {
+    color: #4B5563 !important;
+}
+
+.xai-list-container li.check::before {
+    color: #10B981 !important;
+}
+
+.xai-list-container li.warn::before {
+    color: #F59E0B !important;
+}
+
+.stat-lbl, .trend-down, .trend-up, .stat-num {
+    color: #1F2937 !important;
+}
+
+.metric-card {
+    background: #FFFFFF !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.slider-val {
+    color: #1E3A8A !important;
+}
+
+/* Dynamic Classes */
+.text-green {
+    color: #10B981 !important;
+}
+
+.text-indigo {
+    color: #3B82F6 !important;
+}
+
+.text-warning {
+    color: #F59E0B !important;
+}
+
+.text-red {
+    color: #EF4444 !important;
+}
+
+.pulse-green {
+    background-color: #10B981 !important;
+}
+
+/* Logo brand gradients */
+.logo-icon {
+    background: linear-gradient(135deg, #10B981, #1E3A8A) !important;
+}
+
+.logo-icon i {
+    color: white !important;
+}
+
+/* Chart overrides for Light Theme */
+.chart-bar-fill {
+    background-color: #3B82F6 !important;
+}
+
+.chart-bar-fill.bar-salary {
+    background-color: #10B981 !important;
+}
+
+.chart-label {
+    color: #4B5563 !important;
+}
+
+
