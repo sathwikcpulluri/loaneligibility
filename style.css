@@ -1721,21 +1721,8 @@ h1, h2, h3, h4, .brand-name {
     margin-bottom: 8px;
 }
 
-/* Responsive Breakpoints */
-@media(max-width: 1024px) {
-    .app-layout {
-        grid-template-columns: 1fr;
-    }
-    .sidebar {
-        display: none; /* In production, would use hamburger collapse */
-    }
-    .main-content {
-        padding: 24px;
-    }
-    .dashboard-grid, .simulator-grid, .lender-workspace-split {
-        grid-template-columns: 1fr;
-    }
-}
+/* Responsive Breakpoints disabled to keep layout identical on mobile/tablet/desktop */
+
 
 /* ==========================================================================
    AUTHENTICATION MODULE
