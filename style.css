@@ -2102,3 +2102,14 @@ h1, h2, h3, h4, .brand-name {
     color: #F87171 !important;
 }
 
+/* App Footer Styling */
+.app-footer {
+    text-align: center;
+    padding: 24px 0;
+    margin-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: #64748B;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
