@@ -14,8 +14,98 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="dark-theme">
+    <!-- Authentication Container -->
+    <div id="auth-container" class="auth-container">
+        <div class="auth-background">
+            <div class="glow-orb orb-1"></div>
+            <div class="glow-orb orb-2"></div>
+        </div>
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="auth-logo">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <h2>Welcome to CredInd</h2>
+                <p>Alternative Credit Assessment Platform</p>
+            </div>
+            
+            <!-- Role Selection Tabs -->
+            <div class="auth-role-tabs">
+                <button class="role-tab active" id="tab-role-borrower" onclick="setAuthRole('BORROWER')">
+                    <i class="fa-solid fa-user"></i> Borrower
+                </button>
+                <button class="role-tab" id="tab-role-lender" onclick="setAuthRole('LENDER')">
+                    <i class="fa-solid fa-building-columns"></i> Lender
+                </button>
+            </div>
+
+            <!-- Auth Method Tabs -->
+            <div class="auth-method-tabs">
+                <button class="method-tab active" id="method-otp" onclick="setAuthMethod('otp')">Mobile OTP</button>
+                <button class="method-tab" id="method-email" onclick="setAuthMethod('email')">Email & Password</button>
+            </div>
+
+            <!-- OTP Form -->
+            <form id="form-otp" class="auth-form active" onsubmit="handleOtpSubmit(event)">
+                <div class="form-group">
+                    <label for="login-mobile">Mobile Number</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon" style="left: 14px; position: absolute; color: #475569; font-size: 14px;">+91</span>
+                        <input type="tel" id="login-mobile" placeholder="98765 43210" pattern="[6-9][0-9]{9}" style="padding-left: 50px;" required>
+                    </div>
+                </div>
+                
+                <div id="otp-verification-group" class="form-group hidden">
+                    <label for="login-otp">Enter 6-Digit OTP</label>
+                    <div class="otp-input-container">
+                        <input type="text" maxlength="6" id="login-otp" placeholder="••••••" pattern="[0-9]{6}">
+                    </div>
+                    <div class="otp-timer-container">
+                        <span>Resend OTP in <strong id="otp-timer">30</strong>s</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="auth-btn" id="btn-otp-action">Send OTP</button>
+            </form>
+
+            <!-- Email Form -->
+            <form id="form-email" class="auth-form hidden" onsubmit="handleEmailSubmit(event)">
+                <div class="form-group">
+                    <label for="login-email">Email Address</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-envelope input-icon"></i>
+                        <input type="email" id="login-email" placeholder="name@example.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-lock input-icon"></i>
+                        <input type="password" id="login-password" placeholder="••••••••">
+                    </div>
+                </div>
+                <button type="submit" class="auth-btn">Sign In</button>
+            </form>
+
+            <!-- Divider -->
+            <div class="auth-divider">
+                <span>Or continue with</span>
+            </div>
+
+            <!-- Social logins -->
+            <div class="social-login-grid">
+                <button class="social-btn" onclick="handleSocialLogin('Google')">
+                    <img src="https://lh3.googleusercontent.com/COxitspg5Qb7ICq53wb3s14xr0mtUI05qbW27g4g8wc628wU1j7pB1GQ5ae4n2e4gg" alt="Google"> Google
+                </button>
+                <button class="social-btn" onclick="handleSocialLogin('Aadhaar')">
+                    <i class="fa-solid fa-fingerprint text-indigo"></i> Aadhaar / DigiLocker
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- App Container -->
-    <div class="app-layout">
+    <div class="app-layout" id="app-layout" style="display: none;">
         <!-- Sidebar Navigation -->
         <aside class="sidebar">
             <div class="brand">
@@ -61,6 +151,9 @@
                 <a href="#" class="nav-link" onclick="showSection('chatbot')">
                     <i class="fa-solid fa-robot"></i> AI Score Chatbot
                 </a>
+                <a href="#" class="nav-link logout-link" onclick="logout()">
+                    <i class="fa-solid fa-right-from-bracket"></i> Logout
+                </a>
             </nav>
 
             <!-- Lender Menu Links -->
@@ -70,6 +163,9 @@
                 </a>
                 <a href="#" class="nav-link" onclick="showSection('lender-logs')">
                     <i class="fa-solid fa-shield-halved"></i> Audit & Fraud Logs
+                </a>
+                <a href="#" class="nav-link logout-link" onclick="logout()">
+                    <i class="fa-solid fa-right-from-bracket"></i> Logout
                 </a>
             </nav>
 

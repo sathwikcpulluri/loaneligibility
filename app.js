@@ -1,5 +1,11 @@
 // Global App State
 const state = {
+    isAuthenticated: false,
+    authRole: 'BORROWER',
+    authMethod: 'otp',
+    otpSent: false,
+    otpTimer: 30,
+    otpInterval: null,
     activeRole: 'BORROWER',
     hasUploaded: false,
     currentScore: 350,
@@ -792,8 +798,197 @@ function renderAuditLogs() {
     });
 }
 
+// ==========================================================================
+// AUTHENTICATION LOGIC & ROUTE GUARDS
+// ==========================================================================
+
+function setAuthRole(role) {
+    state.authRole = role;
+    document.getElementById('tab-role-borrower').classList.toggle('active', role === 'BORROWER');
+    document.getElementById('tab-role-lender').classList.toggle('active', role === 'LENDER');
+    
+    // Auto populate placeholder mobile/email context for ease of testing
+    const mobileInput = document.getElementById('login-mobile');
+    const emailInput = document.getElementById('login-email');
+    const passwordInput = document.getElementById('login-password');
+
+    if (role === 'BORROWER') {
+        mobileInput.value = '9876543210';
+        emailInput.value = 'rajesh.patel@gmail.com';
+        passwordInput.value = 'password123';
+    } else {
+        mobileInput.value = '9988776655';
+        emailInput.value = 'ramesh.sharma@nbfc.in';
+        passwordInput.value = 'lenderpass';
+    }
+}
+
+function setAuthMethod(method) {
+    state.authMethod = method;
+    document.getElementById('method-otp').classList.toggle('active', method === 'otp');
+    document.getElementById('method-email').classList.toggle('active', method === 'email');
+    
+    document.getElementById('form-otp').classList.toggle('active', method === 'otp');
+    document.getElementById('form-otp').classList.toggle('hidden', method !== 'otp');
+    
+    document.getElementById('form-email').classList.toggle('active', method === 'email');
+    document.getElementById('form-email').classList.toggle('hidden', method !== 'email');
+}
+
+function handleOtpSubmit(event) {
+    event.preventDefault();
+    const mobile = document.getElementById('login-mobile').value;
+    const actionBtn = document.getElementById('btn-otp-action');
+    const verificationGroup = document.getElementById('otp-verification-group');
+    const otpInput = document.getElementById('login-otp');
+
+    if (!state.otpSent) {
+        // Send OTP Simulation
+        actionBtn.innerText = "Verifying...";
+        actionBtn.disabled = true;
+        
+        setTimeout(() => {
+            state.otpSent = true;
+            actionBtn.innerText = "Confirm & Login";
+            actionBtn.disabled = false;
+            verificationGroup.classList.remove('hidden');
+            otpInput.required = true;
+            otpInput.focus();
+            
+            // Auto fill simulated OTP for user delight/ease
+            otpInput.value = "123456"; 
+            
+            startOtpTimer();
+            
+            // Log System action
+            state.auditLogs.unshift({
+                time: new Date().toISOString().replace('T', ' ').slice(0, 19),
+                user: `Guest (${mobile})`,
+                action: `Sent simulated authentication OTP to +91 ${mobile}`,
+                ip: '192.168.1.99',
+                check: 'SECURE'
+            });
+            renderAuditLogs();
+        }, 1000);
+    } else {
+        // Verify OTP Simulation
+        const otp = otpInput.value;
+        if (otp === "123456") {
+            loginSuccess(state.authRole);
+        } else {
+            alert("Incorrect OTP. Please enter the simulated code 123456.");
+        }
+    }
+}
+
+function startOtpTimer() {
+    clearInterval(state.otpInterval);
+    state.otpTimer = 30;
+    const timerText = document.getElementById('otp-timer');
+    if (timerText) timerText.innerText = state.otpTimer;
+
+    state.otpInterval = setInterval(() => {
+        state.otpTimer--;
+        const tEl = document.getElementById('otp-timer');
+        if (tEl) tEl.innerText = state.otpTimer;
+
+        if (state.otpTimer <= 0) {
+            clearInterval(state.otpInterval);
+            // Reset state to allow resend
+            const otpVerificationGroup = document.getElementById('otp-verification-group');
+            if (otpVerificationGroup) otpVerificationGroup.classList.add('hidden');
+            const actionBtn = document.getElementById('btn-otp-action');
+            if (actionBtn) {
+                actionBtn.innerText = "Send OTP";
+                actionBtn.disabled = false;
+            }
+            state.otpSent = false;
+            const otpInput = document.getElementById('login-otp');
+            if (otpInput) {
+                otpInput.required = false;
+                otpInput.value = '';
+            }
+        }
+    }, 1000);
+}
+
+function handleEmailSubmit(event) {
+    event.preventDefault();
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
+
+    if (email && password) {
+        // Simple login validation logic
+        loginSuccess(state.authRole);
+    }
+}
+
+function handleSocialLogin(provider) {
+    // Show a alert loader and then login
+    const card = document.querySelector('.auth-card');
+    const originalContent = card.innerHTML;
+    
+    card.innerHTML = `
+        <div style="text-align: center; padding: 40px 0;">
+            <i class="fa-solid fa-spinner fa-spin" style="font-size: 40px; color: #10B981; margin-bottom: 20px;"></i>
+            <h3>Authenticating via ${provider}...</h3>
+            <p style="color: #64748B; margin-top: 8px;">Establishing secure Digilocker/Google session</p>
+        </div>
+    `;
+
+    setTimeout(() => {
+        card.innerHTML = originalContent;
+        loginSuccess(state.authRole);
+    }, 1500);
+}
+
+function loginSuccess(role) {
+    state.isAuthenticated = true;
+    
+    // Hide auth screen, show dashboard
+    document.getElementById('auth-container').style.display = 'none';
+    document.getElementById('app-layout').style.display = 'grid';
+
+    // Synchronize global roles switcher & dashboard profile info
+    switchRole(role);
+
+    // Add Security activity audit log
+    state.auditLogs.unshift({
+        time: new Date().toISOString().replace('T', ' ').slice(0, 19),
+        user: role === 'BORROWER' ? 'Rajesh Patel' : 'Ramesh Sharma',
+        action: `User session started successfully via ${state.authMethod.toUpperCase()} Auth`,
+        ip: '192.168.1.18',
+        check: 'SECURE'
+    });
+    renderAuditLogs();
+}
+
+function logout() {
+    // Clear auth state
+    state.isAuthenticated = false;
+    state.otpSent = false;
+    clearInterval(state.otpInterval);
+
+    // Reset inputs
+    document.getElementById('login-mobile').value = '';
+    document.getElementById('login-otp').value = '';
+    document.getElementById('login-email').value = '';
+    document.getElementById('login-password').value = '';
+    document.getElementById('otp-verification-group').classList.add('hidden');
+    document.getElementById('btn-otp-action').innerText = "Send OTP";
+    document.getElementById('btn-otp-action').disabled = false;
+
+    // Toggle views
+    document.getElementById('app-layout').style.display = 'none';
+    document.getElementById('auth-container').style.display = 'flex';
+
+    // Set defaults for login
+    setAuthRole('BORROWER');
+    setAuthMethod('otp');
+}
+
 // Startup Initialization Handler
 document.addEventListener("DOMContentLoaded", () => {
-    // Initialize defaults view
-    showSection('landing');
+    // Set default login forms values
+    setAuthRole('BORROWER');
 });
