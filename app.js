@@ -68,12 +68,6 @@ function showSection(sectionId) {
     if (activeLink) {
         activeLink.classList.add('active');
     }
-
-    // Close mobile sidebar if open
-    const sidebar = document.querySelector('.sidebar');
-    if (sidebar && sidebar.classList.contains('mobile-open')) {
-        sidebar.classList.remove('mobile-open');
-    }
 }
 
 // Switch between Borrower and Lender roles
@@ -998,24 +992,3 @@ document.addEventListener("DOMContentLoaded", () => {
     // Set default login forms values
     setAuthRole('BORROWER');
 });
-
-// Sidebar Collapsible Toggles
-function toggleSidebar() {
-    const layout = document.getElementById('app-layout');
-    const toggleIcon = document.getElementById('sidebar-toggle-icon');
-    if (layout) {
-        layout.classList.toggle('collapsed');
-        if (layout.classList.contains('collapsed')) {
-            if (toggleIcon) toggleIcon.className = "fa-solid fa-chevron-right";
-        } else {
-            if (toggleIcon) toggleIcon.className = "fa-solid fa-chevron-left";
-        }
-    }
-}
-
-function toggleMobileSidebar() {
-    const sidebar = document.querySelector('.sidebar');
-    if (sidebar) {
-        sidebar.classList.toggle('mobile-open');
-    }
-}

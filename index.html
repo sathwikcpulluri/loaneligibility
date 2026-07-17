@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1280">
     <title>CredInd - Alternative Credit Assessment Platform</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -116,10 +116,6 @@
                     <span class="brand-name">CredInd</span>
                     <span class="brand-tag">Financial Inclusion</span>
                 </div>
-                <!-- Desktop Sidebar toggle button -->
-                <button id="sidebar-toggle" class="sidebar-toggle-btn" onclick="toggleSidebar()">
-                    <i class="fa-solid fa-chevron-left" id="sidebar-toggle-icon"></i>
-                </button>
             </div>
 
             <!-- Role Selector Widget -->
@@ -127,10 +123,10 @@
                 <span class="role-label">Active Workspace</span>
                 <div class="selector-toggle">
                     <button class="toggle-btn active" id="btn-role-borrower" onclick="switchRole('BORROWER')">
-                        <i class="fa-solid fa-user"></i> <span class="link-label">Borrower</span>
+                        <i class="fa-solid fa-user"></i> Borrower
                     </button>
                     <button class="toggle-btn" id="btn-role-lender" onclick="switchRole('LENDER')">
-                        <i class="fa-solid fa-building-columns"></i> <span class="link-label">Lender</span>
+                        <i class="fa-solid fa-building-columns"></i> Lender
                     </button>
                 </div>
             </div>
@@ -138,38 +134,38 @@
             <!-- Borrower Menu Links -->
             <nav class="nav-menu" id="menu-borrower">
                 <a href="#" class="nav-link active" onclick="showSection('landing')">
-                    <i class="fa-solid fa-house"></i> <span class="link-label">Home / Pricing</span>
+                    <i class="fa-solid fa-house"></i> Home / Pricing
                 </a>
                 <a href="#" class="nav-link" id="link-dashboard" onclick="showSection('dashboard')">
-                    <i class="fa-solid fa-gauge-high"></i> <span class="link-label">Dashboard</span>
+                    <i class="fa-solid fa-gauge-high"></i> Dashboard
                 </a>
                 <a href="#" class="nav-link" onclick="showSection('upload')">
-                    <i class="fa-solid fa-cloud-arrow-up"></i> <span class="link-label">Upload Documents</span>
+                    <i class="fa-solid fa-cloud-arrow-up"></i> Upload Documents
                 </a>
                 <a href="#" class="nav-link" id="link-transactions" onclick="showSection('transactions')">
-                    <i class="fa-solid fa-receipt"></i> <span class="link-label">Transaction Ledger</span>
+                    <i class="fa-solid fa-receipt"></i> Transaction Ledger
                 </a>
                 <a href="#" class="nav-link" onclick="showSection('loans')">
-                    <i class="fa-solid fa-hand-holding-dollar"></i> <span class="link-label">Loan Simulator</span>
+                    <i class="fa-solid fa-hand-holding-dollar"></i> Loan Simulator
                 </a>
                 <a href="#" class="nav-link" onclick="showSection('chatbot')">
-                    <i class="fa-solid fa-robot"></i> <span class="link-label">AI Score Chatbot</span>
+                    <i class="fa-solid fa-robot"></i> AI Score Chatbot
                 </a>
                 <a href="#" class="nav-link logout-link" onclick="logout()">
-                    <i class="fa-solid fa-right-from-bracket"></i> <span class="link-label">Logout</span>
+                    <i class="fa-solid fa-right-from-bracket"></i> Logout
                 </a>
             </nav>
 
             <!-- Lender Menu Links -->
             <nav class="nav-menu hidden" id="menu-lender">
                 <a href="#" class="nav-link active" onclick="showSection('lender-dashboard')">
-                    <i class="fa-solid fa-list-check"></i> <span class="link-label">Applications Queue</span>
+                    <i class="fa-solid fa-list-check"></i> Applications Queue
                 </a>
                 <a href="#" class="nav-link" onclick="showSection('lender-logs')">
-                    <i class="fa-solid fa-shield-halved"></i> <span class="link-label">Audit & Fraud Logs</span>
+                    <i class="fa-solid fa-shield-halved"></i> Audit & Fraud Logs
                 </a>
                 <a href="#" class="nav-link logout-link" onclick="logout()">
-                    <i class="fa-solid fa-right-from-bracket"></i> <span class="link-label">Logout</span>
+                    <i class="fa-solid fa-right-from-bracket"></i> Logout
                 </a>
             </nav>
 
@@ -187,10 +183,6 @@
         <main class="main-content">
             <!-- Top Header -->
             <header class="app-header">
-                <!-- Hamburger Button for Mobile -->
-                <button id="mobile-hamburger" class="mobile-hamburger-btn" onclick="toggleMobileSidebar()">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
                 <h1 class="header-title" id="header-section-title">Home Portal</h1>
                 <div class="header-actions">
                     <div class="status-indicator">

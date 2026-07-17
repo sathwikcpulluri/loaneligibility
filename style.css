@@ -20,9 +20,8 @@ h1, h2, h3, h4, .brand-name {
 /* App Layout Grid */
 .app-layout {
     display: grid;
-    grid-template-columns: 240px 1fr;
+    grid-template-columns: 280px 1fr;
     min-height: 100vh;
-    transition: grid-template-columns 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Sidebar Styling */
@@ -35,9 +34,6 @@ h1, h2, h3, h4, .brand-name {
     height: 100vh;
     position: sticky;
     top: 0;
-    width: 100%;
-    overflow-x: hidden;
-    transition: padding 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
 }
 
 .brand {
@@ -139,7 +135,7 @@ h1, h2, h3, h4, .brand-name {
     flex: 1;
 }
 
-nav-link {
+.nav-link {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -149,17 +145,16 @@ nav-link {
     font-size: 14px;
     font-weight: 500;
     border-radius: 10px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s ease;
 }
 
 .nav-link:hover {
     background-color: rgba(255, 255, 255, 0.03);
     color: #FFFFFF;
-    transform: translateX(4px);
 }
 
 .nav-link.active {
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(99, 102, 241, 0.05));
+    background: rgba(16, 185, 129, 0.1);
     color: #10B981;
     font-weight: 600;
     border-left: 3px solid #10B981;
@@ -2105,215 +2100,5 @@ nav-link {
 .nav-link.logout-link:hover {
     background: rgba(239, 68, 68, 0.08) !important;
     color: #F87171 !important;
-    transform: none !important;
-}
-
-/* ==========================================================================
-   SIDEBAR COLLAPSE & MOBILE DRAWER STYLING
-   ========================================================================== */
-
-/* Collapsed layout overrides */
-.app-layout.collapsed {
-    grid-template-columns: 72px 1fr;
-}
-
-.app-layout.collapsed .sidebar {
-    padding: 24px 12px;
-}
-
-/* Collapsed Brand */
-.app-layout.collapsed .brand {
-    justify-content: center;
-    gap: 0;
-}
-
-.brand-info {
-    transition: opacity 0.2s ease, width 0.2s ease, margin 0.2s ease;
-    opacity: 1;
-    overflow: hidden;
-}
-
-.app-layout.collapsed .brand-info {
-    opacity: 0;
-    width: 0;
-    margin: 0;
-    padding: 0;
-}
-
-/* Sidebar Toggle button styling */
-.sidebar-toggle-btn {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    color: #94A3B8;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 8px;
-    position: absolute;
-    right: -10px;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: all 0.3s ease;
-    z-index: 10;
-}
-
-.sidebar-toggle-btn:hover {
-    color: white;
-    background: rgba(255, 255, 255, 0.08);
-}
-
-.app-layout.collapsed .sidebar-toggle-btn {
-    right: 50%;
-    transform: translate(50%, -50%);
-    position: relative;
-    margin-top: 16px;
-}
-
-/* Role Selector Minimization */
-.role-selector-card {
-    transition: opacity 0.2s ease, height 0.2s ease, margin 0.2s ease, padding 0.2s ease;
-}
-
-.app-layout.collapsed .role-selector-card {
-    opacity: 0;
-    height: 0;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    border: none;
-}
-
-/* Collapsed links */
-.nav-link .link-label {
-    opacity: 1;
-    transition: opacity 0.2s ease;
-    display: inline-block;
-}
-
-.app-layout.collapsed .nav-link .link-label {
-    opacity: 0;
-    width: 0;
-    height: 0;
-    overflow: hidden;
-    display: none;
-}
-
-.app-layout.collapsed .nav-link {
-    justify-content: center;
-    padding: 12px 0;
-    width: 44px;
-    height: 44px;
-    margin: 0 auto;
-    transform: none !important;
-}
-
-.app-layout.collapsed .nav-link.active {
-    border-left: none;
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(99, 102, 241, 0.15));
-    border-bottom: 2px solid #10B981;
-    border-radius: 10px;
-    padding-left: 0;
-}
-
-/* Profile Minimization */
-.user-profile-card {
-    transition: all 0.3s ease;
-}
-
-.app-layout.collapsed .user-profile-card {
-    justify-content: center;
-    padding: 8px 0;
-}
-
-.user-details {
-    transition: opacity 0.2s ease, width 0.2s ease;
-    opacity: 1;
-}
-
-.app-layout.collapsed .user-details {
-    opacity: 0;
-    width: 0;
-    height: 0;
-    overflow: hidden;
-}
-
-/* Header Hamburger toggle button */
-.mobile-hamburger-btn {
-    display: none;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    color: #F1F5F9;
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 18px;
-    margin-right: 16px;
-    transition: all 0.2s ease;
-}
-
-.mobile-hamburger-btn:hover {
-    color: #10B981;
-    background: rgba(255, 255, 255, 0.08);
-}
-
-/* Responsive overlays drawer */
-@media (max-width: 1024px) {
-    .app-layout {
-        grid-template-columns: 1fr !important;
-    }
-
-    .sidebar {
-        position: fixed !important;
-        left: -260px;
-        top: 0;
-        bottom: 0;
-        width: 250px !important;
-        transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-        z-index: 9999;
-        box-shadow: 5px 0 25px rgba(0, 0, 0, 0.5);
-    }
-
-    .sidebar.mobile-open {
-        left: 0 !important;
-    }
-
-    .mobile-hamburger-btn {
-        display: flex !important;
-    }
-
-    .sidebar-toggle-btn {
-        display: none !important;
-    }
-
-    /* Force show all inner elements when inside the slide drawer */
-    .brand-info, .link-label, .role-selector-card, .user-details {
-        opacity: 1 !important;
-        width: auto !important;
-        height: auto !important;
-        display: block !important;
-        overflow: visible !important;
-        margin: initial !important;
-    }
-
-    .nav-link {
-        justify-content: flex-start !important;
-        padding: 12px 16px !important;
-        width: 100% !important;
-        transform: none !important;
-    }
-    
-    .nav-link.active {
-        border-left: 3px solid #10B981 !important;
-        border-bottom: none !important;
-        border-radius: 0 10px 10px 0 !important;
-        padding-left: 13px !important;
-    }
 }
 
