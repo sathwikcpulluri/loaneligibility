@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CredInd - Alternative Credit Assessment Platform</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+    <!-- App Container -->
+    <div class="app-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <div class="brand-info">
+                    <span class="brand-name">CredInd</span>
+                    <span class="brand-tag">Financial Inclusion</span>
+                </div>
+            </div>
+
+            <!-- Role Selector Widget -->
+            <div class="role-selector-card">
+                <span class="role-label">Active Workspace</span>
+                <div class="selector-toggle">
+                    <button class="toggle-btn active" id="btn-role-borrower" onclick="switchRole('BORROWER')">
+                        <i class="fa-solid fa-user"></i> Borrower
+                    </button>
+                    <button class="toggle-btn" id="btn-role-lender" onclick="switchRole('LENDER')">
+                        <i class="fa-solid fa-building-columns"></i> Lender
+                    </button>
+                </div>
+            </div>
+
+            <!-- Borrower Menu Links -->
+            <nav class="nav-menu" id="menu-borrower">
+                <a href="#" class="nav-link active" onclick="showSection('landing')">
+                    <i class="fa-solid fa-house"></i> Home / Pricing
+                </a>
+                <a href="#" class="nav-link" id="link-dashboard" onclick="showSection('dashboard')">
+                    <i class="fa-solid fa-gauge-high"></i> Dashboard
+                </a>
+                <a href="#" class="nav-link" onclick="showSection('upload')">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> Upload Documents
+                </a>
+                <a href="#" class="nav-link" id="link-transactions" onclick="showSection('transactions')">
+                    <i class="fa-solid fa-receipt"></i> Transaction Ledger
+                </a>
+                <a href="#" class="nav-link" onclick="showSection('loans')">
+                    <i class="fa-solid fa-hand-holding-dollar"></i> Loan Simulator
+                </a>
+                <a href="#" class="nav-link" onclick="showSection('chatbot')">
+                    <i class="fa-solid fa-robot"></i> AI Score Chatbot
+                </a>
+            </nav>
+
+            <!-- Lender Menu Links -->
+            <nav class="nav-menu hidden" id="menu-lender">
+                <a href="#" class="nav-link active" onclick="showSection('lender-dashboard')">
+                    <i class="fa-solid fa-list-check"></i> Applications Queue
+                </a>
+                <a href="#" class="nav-link" onclick="showSection('lender-logs')">
+                    <i class="fa-solid fa-shield-halved"></i> Audit & Fraud Logs
+                </a>
+            </nav>
+
+            <!-- User Context Card -->
+            <div class="user-profile-card">
+                <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Rajesh" alt="Avatar" class="user-avatar" id="user-avatar">
+                <div class="user-details">
+                    <span class="user-name" id="profile-name">Rajesh Patel</span>
+                    <span class="user-role" id="profile-subtitle">General Store (MSME)</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <header class="app-header">
+                <h1 class="header-title" id="header-section-title">Home Portal</h1>
+                <div class="header-actions">
+                    <div class="status-indicator">
+                        <span class="dot pulse-green"></span>
+                        <span class="status-text">FastAPI AI Eng: Online</span>
+                    </div>
+                    <div class="notification-btn">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="badge">2</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Screens -->
+            <div class="screen-container">
+
+                <!-- 1. LANDING PAGE VIEW -->
+                <section id="sec-landing" class="app-section active">
+                    <div class="hero-banner">
+                        <h2 class="hero-title">Unlock Micro-Credit Without Traditional Credit History</h2>
+                        <p class="hero-desc">Analyzing verified digital transaction patterns (UPI, wallets, utility bills) to generate a premium AI-powered Credit Profile for Indian gig workers, MSMEs, and freelancers.</p>
+                        <div class="hero-actions">
+                            <button class="btn btn-primary" onclick="showSection('upload')">
+                                <i class="fa-solid fa-cloud-arrow-up"></i> Upload Statements to Start
+                            </button>
+                            <button class="btn btn-outline" onclick="showSection('chatbot')">
+                                <i class="fa-solid fa-comments"></i> Ask AI Chatbot
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Platform Features Grid -->
+                    <h3 class="section-subtitle">Platform Features</h3>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon bg-green"><i class="fa-solid fa-microchip"></i></div>
+                            <h4 class="feature-title">AI Transaction Categorization</h4>
+                            <p class="feature-desc">Automatically labels transaction descriptions into 14 distinct folders, detecting recurring EMIs, utility bounds, and cash flow trends.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon bg-indigo"><i class="fa-solid fa-signature"></i></div>
+                            <h4 class="feature-title">XGBoost Credit Scorer</h4>
+                            <p class="feature-desc">Utilizes predictive models mapping aggregate cash balances and payment behaviors to a secure 0-1000 credit score.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon bg-red"><i class="fa-solid fa-shield-halved"></i></div>
+                            <h4 class="feature-title">Tamper Anomaly Detection</h4>
+                            <p class="feature-desc">Performs mathematical balance audits and checks PDF file metadata properties to isolate statement forgery.</p>
+                        </div>
+                    </div>
+
+                    <!-- Pricing Tier Panels -->
+                    <h3 class="section-subtitle">Flexible Subscriptions</h3>
+                    <div class="pricing-grid">
+                        <div class="price-card">
+                            <span class="price-tier">Borrower Hub</span>
+                            <div class="price-value">₹0 <span class="price-period">/ forever</span></div>
+                            <p class="price-desc">Generate credit profiles, view cash charts, simulate EMIs, and apply for approved partner loans.</p>
+                            <ul class="price-features">
+                                <li><i class="fa-solid fa-check"></i> Unlimited statement analysis</li>
+                                <li><i class="fa-solid fa-check"></i> Custom 0-1000 score index</li>
+                                <li><i class="fa-solid fa-check"></i> AI Chatbot consultations</li>
+                            </ul>
+                            <button class="btn btn-block btn-outline" onclick="showSection('upload')">Get Started</button>
+                        </div>
+                        <div class="price-card popular">
+                            <span class="popular-tag">Recommended</span>
+                            <span class="price-tier">MFI & NBFC Plan</span>
+                            <div class="price-value">₹12,500 <span class="price-period">/ month</span></div>
+                            <p class="price-desc">Underwriter workspaces, API credit rating hooks, detailed SHAP explainers, and audit controls.</p>
+                            <ul class="price-features">
+                                <li><i class="fa-solid fa-check"></i> Up to 1,000 applicants reviews</li>
+                                <li><i class="fa-solid fa-check"></i> Comprehensive fraud audits</li>
+                                <li><i class="fa-solid fa-check"></i> Custom model param tuning</li>
+                            </ul>
+                            <button class="btn btn-block btn-primary" onclick="switchRole('LENDER')">Launch Underwriting</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. BORROWER DASHBOARD VIEW -->
+                <section id="sec-dashboard" class="app-section">
+                    <!-- Dashboard Empty State warning -->
+                    <div class="empty-state-notice" id="dashboard-empty-state">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <h3>No Financial Statements Uploaded Yet</h3>
+                        <p>To view your AI credit score, income stability, and category charts, please upload at least one month of transaction statements.</p>
+                        <button class="btn btn-primary" onclick="showSection('upload')">Go to Upload Center</button>
+                    </div>
+
+                    <!-- Active Dashboard Grid -->
+                    <div class="dashboard-grid hidden" id="dashboard-active-grid">
+                        
+                        <!-- Left Column: Core Score Gauge -->
+                        <div class="dashboard-col">
+                            <div class="glass-card main-score-card">
+                                <h3 class="card-title">Alternative Credit Score</h3>
+                                <div class="score-dial-wrapper">
+                                    <svg class="score-svg" viewBox="0 0 200 200">
+                                        <!-- Background Circle -->
+                                        <circle cx="100" cy="100" r="85" class="svg-bg-circle"></circle>
+                                        <!-- Active Gauge Arc -->
+                                        <circle cx="100" cy="100" r="85" class="svg-progress-circle" id="score-gauge-ring"></circle>
+                                    </svg>
+                                    <div class="score-center-text">
+                                        <span class="score-num" id="dash-score-value">350</span>
+                                        <span class="score-max">/ 1000</span>
+                                        <span class="score-grade" id="dash-score-grade">Evaluating</span>
+                                    </div>
+                                </div>
+                                <div class="score-explain-box">
+                                    <h4>Explainable AI (XAI) Factors:</h4>
+                                    <ul class="xai-list" id="xai-list-container">
+                                        <!-- Dynamic explanations injected here -->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Secondary KPI Indicators -->
+                        <div class="dashboard-col">
+                            <div class="kpi-grid">
+                                <div class="glass-card kpi-card">
+                                    <span class="kpi-label">Income Stability</span>
+                                    <span class="kpi-val text-green" id="dash-income-stability">Calculating</span>
+                                    <div class="kpi-progress">
+                                        <div class="kpi-bar bg-green" id="dash-income-bar" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                                <div class="glass-card kpi-card">
+                                    <span class="kpi-label">Debt Burden (EMI/Income)</span>
+                                    <span class="kpi-val text-red" id="dash-debt-burden">Calculating</span>
+                                    <div class="kpi-progress">
+                                        <div class="kpi-bar bg-red" id="dash-debt-bar" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                                <div class="glass-card kpi-card">
+                                    <span class="kpi-label">Monthly Net Savings</span>
+                                    <span class="kpi-val text-indigo" id="dash-net-savings">Calculating</span>
+                                    <div class="kpi-progress">
+                                        <div class="kpi-bar bg-indigo" id="dash-savings-bar" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                                <div class="glass-card kpi-card">
+                                    <span class="kpi-label">Fraud/tamper Probability</span>
+                                    <span class="kpi-val text-green" id="dash-fraud-prob">Calculating</span>
+                                    <div class="kpi-progress">
+                                        <div class="kpi-bar bg-green" id="dash-fraud-bar" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Spending Category Breakdown Chart -->
+                            <div class="glass-card chart-card">
+                                <h3 class="card-title">Category Spending Analysis</h3>
+                                <div class="bar-chart-container" id="bar-chart-container">
+                                    <!-- Dynamic SVG/CSS Bar Chart Injected Here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. DOCUMENT UPLOAD CENTER VIEW -->
+                <section id="sec-upload" class="app-section">
+                    <div class="glass-card upload-container">
+                        <div class="upload-drop-zone" id="drop-zone" onclick="triggerFileInput()">
+                            <i class="fa-solid fa-cloud-arrow-up cloud-icon"></i>
+                            <h3>Drag & Drop Financial Statement here</h3>
+                            <p>Supports bank PDF statement, UPI transactions CSV, or GST log spreadsheet.</p>
+                            <span class="btn btn-outline btn-sm">Browse Files</span>
+                            <input type="file" id="statement-file-input" style="display: none;" onchange="handleFileSelected(event)">
+                        </div>
+
+                        <!-- Processing Stepper Animation Block -->
+                        <div class="upload-processing-stepper hidden" id="upload-stepper">
+                            <h3 class="stepper-title"><i class="fa-solid fa-spinner fa-spin"></i> Processing Document: <span id="processing-filename">statement.pdf</span></h3>
+                            
+                            <div class="step-line" id="step-1">
+                                <div class="step-status"><i class="fa-solid fa-clock"></i></div>
+                                <div class="step-content">
+                                    <span class="step-name">1. Uploading encrypted file to gateway</span>
+                                    <span class="step-sub text-muted">Securing document via AES-256</span>
+                                </div>
+                            </div>
+
+                            <div class="step-line" id="step-2">
+                                <div class="step-status"><i class="fa-solid fa-clock"></i></div>
+                                <div class="step-content">
+                                    <span class="step-name">2. Running OCR statement text parser</span>
+                                    <span class="step-sub text-muted">FastAPI executing Tesseract layout adapters</span>
+                                </div>
+                            </div>
+
+                            <div class="step-line" id="step-3">
+                                <div class="step-status"><i class="fa-solid fa-clock"></i></div>
+                                <div class="step-content">
+                                    <span class="step-name">3. Checking document metadata and balance integrity</span>
+                                    <span class="step-sub text-muted">Isolating tampering & forgery markers</span>
+                                </div>
+                            </div>
+
+                            <div class="step-line" id="step-4">
+                                <div class="step-status"><i class="fa-solid fa-clock"></i></div>
+                                <div class="step-content">
+                                    <span class="step-name">4. Calibrating credit models & aggregations</span>
+                                    <span class="step-sub text-muted">Updating score vectors and loan recommendations</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="upload-options-note">
+                            <h4><i class="fa-solid fa-circle-info"></i> Demo Quick Upload Buttons</h4>
+                            <p>For testing, click a preset file to immediately simulate the OCR and credit engine:</p>
+                            <div class="demo-btn-row">
+                                <button class="btn btn-outline btn-sm btn-demo" onclick="simulateUpload('Rajesh_Patel_Kirana_Store.pdf', 745)">
+                                    <i class="fa-solid fa-file-invoice"></i> Rajesh Patel (High Score Demo)
+                                </button>
+                                <button class="btn btn-outline btn-sm btn-demo" onclick="simulateUpload('Amit_Kumar_Zomato_Rider.pdf', 610)">
+                                    <i class="fa-solid fa-file-invoice"></i> Amit Kumar (Gig Worker Demo)
+                                </button>
+                                <button class="btn btn-outline btn-sm btn-demo" onclick="simulateUpload('Chetan_Street_Vendor_Forged.pdf', 450)">
+                                    <i class="fa-solid fa-triangle-exclamation"></i> Chetan (Tampered / Fraud Demo)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Uploaded Registry List -->
+                    <h3 class="section-subtitle">Uploaded Statement Registry</h3>
+                    <div class="glass-card registry-card">
+                        <table class="table" id="table-registry">
+                            <thead>
+                                <tr>
+                                    <th>Document ID</th>
+                                    <th>Filename</th>
+                                    <th>Data Type</th>
+                                    <th>Status</th>
+                                    <th>Transactions</th>
+                                    <th>Date Uploaded</th>
+                                </tr>
+                            </thead>
+                            <tbody id="registry-tbody">
+                                <tr>
+                                    <td colspan="6" class="text-center text-muted">No documents uploaded yet.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- 4. TRANSACTION LEDGER VIEW -->
+                <section id="sec-transactions" class="app-section">
+                    <div class="ledger-filter-row">
+                        <div class="search-input-wrapper">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" placeholder="Search transactions..." id="ledger-search-input" onkeyup="filterLedger()">
+                        </div>
+                        <div class="filters-wrapper">
+                            <select id="ledger-filter-category" onchange="filterLedger()">
+                                <option value="ALL">All Categories</option>
+                                <option value="SALARY">Salary / Income</option>
+                                <option value="BUSINESS_INCOME">Business Income</option>
+                                <option value="RENT">Rent</option>
+                                <option value="UTILITIES">Utilities</option>
+                                <option value="FOOD">Food & Dining</option>
+                                <option value="EMIS">EMIs / Loans</option>
+                                <option value="SHOPPING">Shopping</option>
+                                <option value="TRAVEL">Travel</option>
+                                <option value="OTHER">Other</option>
+                            </select>
+                            <select id="ledger-filter-type" onchange="filterLedger()">
+                                <option value="ALL">All Types</option>
+                                <option value="CREDIT">Credits only</option>
+                                <option value="DEBIT">Debits only</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="glass-card ledger-card">
+                        <table class="table" id="table-ledger">
+                            <thead>
+                                <tr>
+                                    <th>Transaction Date</th>
+                                    <th>Description</th>
+                                    <th>Category</th>
+                                    <th>Type</th>
+                                    <th>Amount</th>
+                                    <th>Recurring</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ledger-tbody">
+                                <tr>
+                                    <td colspan="6" class="text-center text-muted">No statements uploaded yet. Upload a document to view transaction items.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- 5. LOAN SIMULATOR VIEW -->
+                <section id="sec-loans" class="app-section">
+                    <!-- Simulator Section -->
+                    <div class="simulator-grid" id="loan-simulator-layout">
+                        <!-- Left Pane: Sliders -->
+                        <div class="glass-card simulator-controls">
+                            <h3 class="card-title">Simulate Loan Repayment</h3>
+                            
+                            <div class="slider-group">
+                                <div class="slider-header">
+                                    <span class="slider-label">Requested Loan Amount</span>
+                                    <span class="slider-val" id="val-loan-amount">₹50,000</span>
+                                </div>
+                                <input type="range" min="10000" max="500000" step="5000" value="50000" class="input-slider" id="slider-loan-amount" oninput="updateLoanSimulation()">
+                                <div class="slider-bounds">
+                                    <span>₹10,000</span>
+                                    <span>₹5,00,000</span>
+                                </div>
+                            </div>
+
+                            <div class="slider-group">
+                                <div class="slider-header">
+                                    <span class="slider-label">Tenure (Months)</span>
+                                    <span class="slider-val" id="val-loan-tenure">12 months</span>
+                                </div>
+                                <input type="range" min="3" max="24" step="1" value="12" class="input-slider" id="slider-loan-tenure" oninput="updateLoanSimulation()">
+                                <div class="slider-bounds">
+                                    <span>3 Months</span>
+                                    <span>24 Months</span>
+                                </div>
+                            </div>
+
+                            <!-- Safe EMI Alert Box -->
+                            <div class="safe-emi-gauge border-green" id="safe-emi-box">
+                                <div class="safe-emi-header">
+                                    <span class="emi-indicator-title">Repayment Capacity Meter</span>
+                                    <span class="badge bg-green" id="badge-emi-status">Safe Option</span>
+                                </div>
+                                <div class="emi-details">
+                                    <div class="detail-row">
+                                        <span>Estimated Monthly EMI:</span>
+                                        <strong id="calc-emi-value">₹4,442 / mo</strong>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span>Your analyzed safe limit:</span>
+                                        <span id="calc-safe-limit">₹13,800 / mo</span>
+                                    </div>
+                                </div>
+                                <p class="emi-advice-text" id="calc-emi-advice">Your monthly EMI is well within your average net savings budget, posing low risk of defaults.</p>
+                            </div>
+                        </div>
+
+                        <!-- Right Pane: Lender Matches -->
+                        <div class="simulator-offers-pane">
+                            <h3 class="card-title">Partner Lender Matches</h3>
+                            <div class="lender-grid" id="lender-grid-container">
+                                <!-- Dynamic Loan Offer Cards Injected Here -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 6. AI SCORE CHATBOT VIEW -->
+                <section id="sec-chatbot" class="app-section">
+                    <div class="chatbot-workspace">
+                        <!-- Chat message panel -->
+                        <div class="glass-card chatbot-feed-card">
+                            <div class="chat-header">
+                                <div class="bot-avatar">
+                                    <i class="fa-solid fa-robot"></i>
+                                </div>
+                                <div class="bot-info">
+                                    <span class="bot-name">CredInd AI Advisor</span>
+                                    <span class="bot-status">Powered by FastAPI explainers</span>
+                                </div>
+                            </div>
+
+                            <div class="chat-messages-container" id="chat-messages-container">
+                                <!-- Default Greeting -->
+                                <div class="chat-bubble bot-bubble">
+                                    <p>Hello! I am your AI Financial Advisor. I can analyze your credit details, explain your alternative score metrics, evaluate budget constraints, and simulate safe borrowing plans. How can I help you today?</p>
+                                    <span class="bubble-time">16:56</span>
+                                </div>
+                            </div>
+
+                            <!-- Suggestion quick chips -->
+                            <div class="chat-suggestions-scroll" id="chat-chips-container">
+                                <button class="chip" onclick="submitChat('Explain my alternative credit score.')">Explain my score</button>
+                                <button class="chip" onclick="submitChat('How is my monthly income stability calculated?')">How is income stability computed?</button>
+                                <button class="chip" onclick="submitChat('Give me suggestions to improve my score.')">Suggestions to improve</button>
+                                <button class="chip" onclick="submitChat('What is my safe monthly EMI range?')">Safe EMI suggestions</button>
+                            </div>
+
+                            <!-- Input controller -->
+                            <div class="chat-input-row">
+                                <input type="text" placeholder="Ask anything about your financial health..." id="chat-text-input" onkeydown="if(event.key === 'Enter') sendUserChat()">
+                                <button class="chat-send-btn" onclick="sendUserChat()"><i class="fa-solid fa-paper-plane"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 7. LENDER APPLICATION QUEUE (Lender View) -->
+                <section id="sec-lender-dashboard" class="app-section">
+                    <div class="lender-stats-row">
+                        <div class="glass-card stat-metric">
+                            <span class="stat-lbl">Pending Underwriting Files</span>
+                            <span class="stat-num" id="lender-stat-pending">3 Files</span>
+                        </div>
+                        <div class="glass-card stat-metric">
+                            <span class="stat-lbl">Verified Pass Rate</span>
+                            <span class="stat-num text-green">87.5%</span>
+                        </div>
+                        <div class="glass-card stat-metric">
+                            <span class="stat-lbl">Fraud Alterations Detected</span>
+                            <span class="stat-num text-red" id="lender-stat-fraud">1 Flag</span>
+                        </div>
+                    </div>
+
+                    <div class="lender-workspace-split">
+                        <!-- Left Panel: Applications Table -->
+                        <div class="glass-card queue-table-card">
+                            <h3 class="card-title">Active Ingestion Queue</h3>
+                            <table class="table" id="table-lender-queue">
+                                <thead>
+                                    <tr>
+                                        <th>Applicant Name</th>
+                                        <th>Alt Score</th>
+                                        <th>Risk Class</th>
+                                        <th>Fraud Alert</th>
+                                        <th>Requested</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="lender-queue-tbody">
+                                    <!-- Filled dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Right Panel: Underwriter Detailed Deep-dive Card -->
+                        <div class="glass-card applicant-details-card" id="lender-review-detail-card">
+                            <div class="empty-detail-state" id="lender-review-empty">
+                                <i class="fa-solid fa-address-book"></i>
+                                <h3>Select an Applicant to Review File</h3>
+                                <p>Click "Review File" in the queue table to open bank statements, examine transaction categories, check for alteration fraud, and issue underwriting decisions.</p>
+                            </div>
+
+                            <div class="review-details-container hidden" id="lender-review-active">
+                                <h3 class="review-header" id="review-applicant-name">Applicant File: Rajesh Patel</h3>
+                                
+                                <div class="review-score-grid">
+                                    <div class="review-score-block">
+                                        <span class="block-lbl">Alternative Credit Score</span>
+                                        <strong class="block-val text-green" id="review-score-val">745</strong>
+                                    </div>
+                                    <div class="review-score-block">
+                                        <span class="block-lbl">Fraud Alteration Prob</span>
+                                        <strong class="block-val text-green" id="review-fraud-val">2%</strong>
+                                    </div>
+                                </div>
+
+                                <!-- Risk alerts box -->
+                                <div class="review-alert-box bg-dark" id="review-fraud-alert-box">
+                                    <!-- Injected details -->
+                                </div>
+
+                                <!-- Detailed Stats list -->
+                                <div class="review-detail-list">
+                                    <div class="detail-item">
+                                        <span>Average Monthly Inflow:</span>
+                                        <strong id="review-inflow-val">₹65,000</strong>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span>Savings Ratio:</span>
+                                        <strong id="review-savings-val">32%</strong>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span>Bounced/OD Items:</span>
+                                        <strong class="text-green" id="review-bounce-val">0 instances</strong>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span>Regular UPI Count:</span>
+                                        <strong id="review-upi-val">58 / mo</strong>
+                                    </div>
+                                </div>
+
+                                <!-- Decision forms -->
+                                <div class="review-decision-form">
+                                    <label class="form-label">Underwriter Notes:</label>
+                                    <textarea class="form-textarea" placeholder="Input auditing remarks..." id="lender-decision-notes"></textarea>
+                                    
+                                    <div class="decision-btn-row">
+                                        <button class="btn btn-outline text-red border-red" onclick="submitLenderDecision('REJECTED')">
+                                            <i class="fa-solid fa-xmark"></i> Reject Loan
+                                        </button>
+                                        <button class="btn btn-primary" onclick="submitLenderDecision('APPROVED')">
+                                            <i class="fa-solid fa-check"></i> Approve Loan
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 8. LENDER AUDIT & FRAUD LOGS VIEW -->
+                <section id="sec-lender-logs" class="app-section">
+                    <div class="glass-card logs-container-card">
+                        <h3 class="card-title">System Activity Security Logs</h3>
+                        <table class="table font-mono" id="table-audit-logs">
+                            <thead>
+                                <tr>
+                                    <th>Timestamp</th>
+                                    <th>Actor / User</th>
+                                    <th>Activity Code</th>
+                                    <th>IP / Agent Details</th>
+                                    <th>Integrity Verification</th>
+                                </tr>
+                            </thead>
+                            <tbody id="audit-logs-tbody">
+                                <!-- Injected dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal-overlay hidden" id="loan-apply-modal">
+        <div class="glass-card modal-card">
+            <i class="fa-solid fa-circle-check success-modal-icon"></i>
+            <h2>Application Disbursed / Submitted</h2>
+            <p>Your application for the loan matching has been successfully forwarded to the partner bank/NBFC's underwriter queue. You will receive an SMS notification upon final approval.</p>
+            <button class="btn btn-primary" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <!-- Script file -->
+    <script src="app.js"></script>
+</body>
+</html>

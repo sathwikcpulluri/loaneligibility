@@ -1,0 +1,224 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  BORROWER
+  LENDER
+  ADMIN
+}
+
+enum DocumentType {
+  PDF
+  CSV
+  EXCEL
+  IMAGE
+}
+
+enum ProcessingStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+enum TransactionType {
+  CREDIT
+  DEBIT
+}
+
+enum TransactionCategory {
+  SALARY
+  BUSINESS_INCOME
+  RENT
+  UTILITIES
+  SHOPPING
+  EMIS
+  INSURANCE
+  SUBSCRIPTIONS
+  FOOD
+  MEDICAL
+  TRAVEL
+  INVESTMENT
+  TRANSFER
+  CASH_WITHDRAWAL
+  OTHER
+}
+
+enum LoanStatus {
+  PENDING
+  APPROVED
+  DISBURSED
+  REJECTED
+  PAID
+}
+
+model User {
+  id           String        @id @default(uuid())
+  email        String        @unique
+  passwordHash String
+  phoneNumber  String        @unique
+  fullName     String
+  role         Role          @default(BORROWER)
+  panNumber    String?
+  aadhaarHash  String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  
+  documents    Document[]
+  bankAccounts BankAccount[]
+  creditScores CreditScore[]
+  
+  // Relations for Loans: A user can be a borrower or a lender
+  borrowedLoans Loan[]       @relation("BorrowerRelation")
+  approvedLoans Loan[]       @relation("LenderRelation")
+  
+  auditLogs    AuditLog[]
+  aiPredictions AIPrediction[]
+}
+
+model Document {
+  id           String           @id @default(uuid())
+  userId       String
+  fileName     String
+  fileUrl      String
+  fileType     DocumentType
+  status       ProcessingStatus @default(PENDING)
+  fileHash     String?          // For file integrity check
+  uploadedAt   DateTime         @default(now())
+  
+  user         User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transactions Transaction[]
+  
+  @@index([userId])
+}
+
+model BankAccount {
+  id                 String   @id @default(uuid())
+  userId             String
+  bankName           String
+  accountNumber      String
+  accountHolderName  String
+  ifscCode           String
+  currentBalance     Decimal  @db.Decimal(12, 2)
+  averageBalance     Decimal  @db.Decimal(12, 2)
+  createdAt          DateTime @default(now())
+  
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transactions       Transaction[]
+  
+  @@index([userId])
+}
+
+model Transaction {
+  id               String              @id @default(uuid())
+  bankAccountId    String
+  documentId       String?
+  transactionDate  DateTime
+  description      String
+  category         TransactionCategory @default(OTHER)
+  type             TransactionType
+  amount           Decimal             @db.Decimal(12, 2)
+  referenceNumber  String?
+  isRecurring      Boolean             @default(false)
+  isFlagged        Boolean             @default(false)
+  createdAt        DateTime            @default(now())
+  
+  bankAccount      BankAccount         @relation(fields: [bankAccountId], references: [id], onDelete: Cascade)
+  document         Document?           @relation(fields: [documentId], references: [id], onDelete: SetNull)
+  
+  @@index([bankAccountId])
+  @@index([category])
+  @@index([transactionDate])
+}
+
+model CreditScore {
+  id                     String        @id @default(uuid())
+  userId                 String
+  score                  Int
+  incomeStabilityScore   Int
+  cashFlowScore          Int
+  businessHealthScore    Int
+  riskScore              Int
+  debtBurden             Decimal       @db.Decimal(5, 2) // percentage
+  repaymentProbability   Decimal       @db.Decimal(5, 2) // probability 0.0 to 1.0
+  fraudProbability       Decimal       @db.Decimal(5, 2) // probability 0.0 to 1.0
+  explanations           Json          // Array of strings or detail key-value pairs
+  generatedAt            DateTime      @default(now())
+  
+  user                   User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  riskAnalysis           RiskAnalysis?
+  
+  @@index([userId, generatedAt])
+}
+
+model RiskAnalysis {
+  id                 String      @id @default(uuid())
+  creditScoreId      String      @unique
+  totalMonthlyIncome  Decimal     @db.Decimal(12, 2)
+  totalMonthlyExpense Decimal     @db.Decimal(12, 2)
+  debtToIncomeRatio  Decimal     @db.Decimal(5, 2) // percentage
+  overdraftCount     Int         @default(0)
+  upiCount           Int         @default(0)
+  upiVolume          Decimal     @db.Decimal(12, 2)
+  categoryBreakdown  Json        // Category percentages/totals
+  createdAt          DateTime    @default(now())
+  
+  creditScore        CreditScore @relation(fields: [creditScoreId], references: [id], onDelete: Cascade)
+}
+
+model Loan {
+  id                  String     @id @default(uuid())
+  borrowerId          String
+  lenderId            String?
+  amount              Decimal    @db.Decimal(12, 2)
+  tenureMonths        Int
+  interestRate        Decimal    @db.Decimal(5, 2) // APR percentage
+  safeEmi             Decimal    @db.Decimal(12, 2)
+  approvalProbability Decimal    @db.Decimal(5, 2) // percentage 0.00 to 1.00
+  category            String
+  status              LoanStatus @default(PENDING)
+  createdAt           DateTime   @default(now())
+  updatedAt           DateTime   @updatedAt
+  
+  borrower            User       @relation("BorrowerRelation", fields: [borrowerId], references: [id], onDelete: Cascade)
+  lender              User?      @relation("LenderRelation", fields: [lenderId], references: [id], onDelete: SetNull)
+  
+  @@index([borrowerId])
+  @@index([lenderId])
+}
+
+model AIPrediction {
+  id                   String   @id @default(uuid())
+  userId               String
+  modelName            String
+  predictionType       String   // e.g. "DEFAULT_PROBABILITY", "CASHFLOW_FORECAST"
+  inputFeatures        Json
+  outputProbabilities  Json
+  explainabilityData   Json     // SHAP / relative feature weight data
+  createdAt            DateTime @default(now())
+  
+  user                 User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([userId])
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  userId    String?
+  action    String
+  ipAddress String?
+  userAgent String?
+  details   Json?
+  timestamp DateTime @default(now())
+  
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  
+  @@index([userId])
+  @@index([timestamp])
+}
