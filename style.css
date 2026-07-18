@@ -2114,377 +2114,159 @@ h1, h2, h3, h4, .brand-name {
 }
 
 /* ==========================================================================
-   LIGHT THEME OVERRIDES (Background: #FFEDD5, Primary: #1E3A8A, Secondary: #3B82F6, Text: #1F2937)
+   STRICT DUOTONE THEME OVERRIDES (Background: #FFEDD5, Secondary/Accent/Borders/Text: #991B1B)
    ========================================================================== */
-body {
+body, html, .auth-container, .auth-background, .sidebar, .app-header, .glass-card, .kpi-card, .chatbot-container, .chat-input-area, .modal-card, .metric-card, .table td {
     background-color: #FFEDD5 !important;
+    background: #FFEDD5 !important;
     color: #991B1B !important;
 }
 
-h1, h2, h3, h4, h5, h6, .brand-name, .header-title, .card-title {
+h1, h2, h3, h4, h5, h6, .brand-name, .header-title, .card-title, p, span, div, li, td, th, label, input, select, textarea, i {
     color: #991B1B !important;
 }
 
-/* Sidebar Light Style */
+/* Borders and Outlines - using only #991B1B */
+.sidebar, .app-header, .glass-card, .kpi-card, .chatbot-container, .chat-input-area, .modal-card, .metric-card, .table th, .table td, .user-profile-card, .role-selector-card, .auth-card, .auth-role-tabs, .social-btn, input, select, textarea, .status-indicator, .drop-zone {
+    border: 1px solid #991B1B !important;
+}
+
 .sidebar {
-    background-color: #FFFFFF !important;
-    border-right: 1px solid rgba(0, 0, 0, 0.08) !important;
+    border-right: 2px solid #991B1B !important;
+    border-left: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
 }
 
-.brand-name {
-    color: #1E3A8A !important;
-}
-
-.role-selector-card {
-    background: rgba(0, 0, 0, 0.02) !important;
-    border: 1px solid rgba(0, 0, 0, 0.06) !important;
-}
-
-.role-label {
-    color: #4B5563 !important;
-}
-
-.selector-toggle {
-    background-color: #FFF7ED !important;
-}
-
-.toggle-btn {
-    color: #4B5563 !important;
-}
-
-.toggle-btn.active {
-    background-color: #FFFFFF !important;
-    color: #1E3A8A !important;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
-}
-
-.nav-link {
-    color: #4B5563 !important;
-}
-
-.nav-link:hover {
-    background-color: rgba(30, 58, 138, 0.04) !important;
-    color: #1E3A8A !important;
-}
-
-.nav-link.active {
-    background: rgba(30, 58, 138, 0.08) !important;
-    color: #1E3A8A !important;
-    border-left: 3px solid #1E3A8A !important;
+.app-header {
+    border-bottom: 2px solid #991B1B !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-top: none !important;
 }
 
 .user-profile-card {
-    border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
-    background: rgba(0, 0, 0, 0.01) !important;
+    border-top: 2px solid #991B1B !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
 }
 
-.user-name {
-    color: #991B1B !important;
+/* Dynamic Hover/Active States: Inverted palette (BG #991B1B, Color #FFEDD5) */
+.btn-primary, .auth-btn, .chat-send-btn, .social-btn:hover, .table th, .nav-link.active, .toggle-btn.active, .role-tab.active, .method-tab.active, .chat-bubble.user, .badge, .kpi-bar, .progress-bar-fill, .logo-icon, .chart-bar-fill {
+    background-color: #991B1B !important;
+    background: #991B1B !important;
+    color: #FFEDD5 !important;
 }
 
-.user-role {
-    color: #4B5563 !important;
+/* Text overrides for inverted elements */
+.btn-primary h1, .btn-primary h2, .btn-primary h3, .btn-primary h4, .btn-primary h5, .btn-primary h6, .btn-primary p, .btn-primary span, .btn-primary i,
+.auth-btn h1, .auth-btn h2, .auth-btn h3, .auth-btn h4, .auth-btn h5, .auth-btn h6, .auth-btn p, .auth-btn span, .auth-btn i,
+.chat-send-btn i, .social-btn:hover span, .social-btn:hover i,
+.table th span, .table th i,
+.nav-link.active span, .nav-link.active i,
+.toggle-btn.active span, .toggle-btn.active i,
+.role-tab.active span, .role-tab.active i,
+.method-tab.active span, .method-tab.active i,
+.chat-bubble.user p, .chat-bubble.user span, .chat-bubble.user i,
+.logo-icon i {
+    color: #FFEDD5 !important;
 }
 
-/* Header Light Style */
-.app-header {
-    background-color: #FFFFFF !important;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
-}
-
-.status-indicator {
-    background: rgba(16, 185, 129, 0.1) !important;
-    border: 1px solid rgba(16, 185, 129, 0.2) !important;
-}
-
-.status-text {
-    color: #10B981 !important;
-}
-
-.notification-btn {
-    background-color: #FFF7ED !important;
-    border: 1px solid rgba(0, 0, 0, 0.06) !important;
-    color: #4B5563 !important;
-}
-
-/* Glass Cards to Clean Light Cards */
-.glass-card {
-    background: #FFFFFF !important;
-    border: 1px solid rgba(0, 0, 0, 0.08) !important;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
-    backdrop-filter: none !important;
-}
-
-.card-title {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
-}
-
-/* KPI Elements */
-.kpi-card {
-    background-color: #FFFFFF !important;
-    border: 1px solid rgba(0, 0, 0, 0.06) !important;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02) !important;
-}
-
-.kpi-value {
-    color: #1E3A8A !important;
-}
-
-.kpi-label {
-    color: #4B5563 !important;
-}
-
-/* Primary/Secondary Buttons */
-.btn-primary, .auth-btn {
-    background: #1E3A8A !important;
-    color: white !important;
-    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.2) !important;
-}
-
-.btn-primary:hover, .auth-btn:hover {
-    background: #1D4ED8 !important;
-}
-
+/* Inactive states & buttons with borders */
 .btn-outline {
-    border: 1px solid #1E3A8A !important;
-    color: #1E3A8A !important;
+    border: 2px solid #991B1B !important;
+    color: #991B1B !important;
+    background: transparent !important;
 }
 
 .btn-outline:hover {
-    background-color: rgba(30, 58, 138, 0.05) !important;
+    background-color: #991B1B !important;
+    color: #FFEDD5 !important;
 }
 
-/* Inputs and Forms */
-input[type="text"], input[type="password"], input[type="email"], input[type="tel"], select, textarea {
-    background-color: #FFFFFF !important;
-    border: 1px solid rgba(0, 0, 0, 0.12) !important;
-    color: #1F2937 !important;
+.btn-outline:hover span, .btn-outline:hover i {
+    color: #FFEDD5 !important;
 }
 
-input:focus, select:focus, textarea:focus {
-    border-color: #3B82F6 !important;
-    box-shadow: 0 0 8px rgba(59, 130, 246, 0.2) !important;
-    background-color: #FFFFFF !important;
-}
-
-.drop-zone {
-    border: 2px dashed rgba(30, 58, 138, 0.2) !important;
-    background: rgba(30, 58, 138, 0.02) !important;
-}
-
-.drop-zone:hover {
-    background: rgba(30, 58, 138, 0.05) !important;
-    border-color: #1E3A8A !important;
-}
-
-.drop-zone-prompt {
-    color: #4B5563 !important;
-}
-
-/* Table Light Styles */
-.table th {
-    background-color: #FFE0B2 !important;
-    color: #4B5563 !important;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.08) !important;
-}
-
-.table td {
+.nav-link:hover:not(.active) {
+    background-color: rgba(153, 27, 27, 0.1) !important;
     color: #991B1B !important;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
 }
 
-.table tr:hover {
-    background-color: rgba(0, 0, 0, 0.01) !important;
-}
-
-/* Chatbot interface */
-.chatbot-container {
-    background-color: #FFFFFF !important;
-    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+.selector-toggle, .auth-role-tabs, .auth-method-tabs {
+    background-color: #FFEDD5 !important;
 }
 
 .chat-bubble.bot {
-    background-color: #FFF7ED !important;
-    color: #991B1B !important;
-    border: 1px solid rgba(0, 0, 0, 0.05) !important;
-}
-
-.chat-bubble.user {
-    background-color: #1E3A8A !important;
-    color: #FFFFFF !important;
-}
-
-.chat-input-area {
-    border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
-    background-color: #FFFFFF !important;
-}
-
-/* Modals */
-.modal-card {
-    background: #FFFFFF !important;
-    border: 1px solid rgba(0, 0, 0, 0.08) !important;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
-}
-
-.modal-card h2 {
-    color: #1F2937 !important;
-}
-
-.modal-card p {
-    color: #4B5563 !important;
-}
-
-/* Authentication Page specific overrides */
-.auth-container {
     background-color: #FFEDD5 !important;
 }
 
-.auth-background {
-    background: radial-gradient(circle at 0% 0%, rgba(30, 58, 138, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 100% 100%, rgba(16, 185, 129, 0.05) 0%, transparent 50%) !important;
-}
-
-.auth-card {
-    background: #FFFFFF !important;
-    border: 1px solid rgba(0, 0, 0, 0.08) !important;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
-}
-
-.auth-header h2 {
-    color: #1E3A8A !important;
-}
-
-.auth-header p {
-    color: #4B5563 !important;
-}
-
-.auth-role-tabs {
-    background: #FFF7ED !important;
-    border: 1px solid rgba(0, 0, 0, 0.06) !important;
-}
-
-.role-tab {
-    color: #4B5563 !important;
-}
-
-.role-tab.active {
-    background: #FFFFFF !important;
-    color: #1E3A8A !important;
-}
-
-.method-tab {
-    color: #4B5563 !important;
-}
-
-.method-tab.active {
-    color: #1E3A8A !important;
-    border-bottom-color: #1E3A8A !important;
-}
-
-.input-wrapper input {
-    background-color: #FFFFFF !important;
-    border: 1px solid rgba(0, 0, 0, 0.12) !important;
-    color: #991B1B !important;
-}
-
-.input-wrapper input:focus {
-    border-color: #3B82F6 !important;
-    box-shadow: 0 0 8px rgba(59, 130, 246, 0.2) !important;
-}
-
-.otp-input-container input {
+/* Form inputs styling */
+input[type="text"], input[type="password"], input[type="email"], input[type="tel"], select, textarea {
     background-color: #FFEDD5 !important;
-    border: 1px solid rgba(0, 0, 0, 0.12) !important;
-    color: #10B981 !important;
-}
-
-.otp-input-container input:focus {
-    border-color: #10B981 !important;
-}
-
-.social-btn {
-    background: #FFFFFF !important;
-    border: 1px solid rgba(0, 0, 0, 0.12) !important;
     color: #991B1B !important;
 }
 
-.social-btn:hover {
-    background: #FFEDD5 !important;
+input:focus, select:focus, textarea:focus {
+    background-color: #FFEDD5 !important;
+    border-color: #991B1B !important;
 }
 
-/* Footer */
-.app-footer {
-    border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
-    color: #4B5563 !important;
+/* Placeholder styling */
+::-webkit-input-placeholder {
+    color: rgba(153, 27, 27, 0.6) !important;
+}
+::-moz-placeholder {
+    color: rgba(153, 27, 27, 0.6) !important;
+}
+:-ms-input-placeholder {
+    color: rgba(153, 27, 27, 0.6) !important;
 }
 
-/* General overrides for lists, details, text elements */
-.xai-list-container li {
-    color: #4B5563 !important;
+/* Indicators */
+.pulse-green, .dot {
+    background-color: #991B1B !important;
+    animation: none !important;
 }
 
-.xai-list-container li.check::before {
-    color: #10B981 !important;
+.status-indicator {
+    background: transparent !important;
 }
 
-.xai-list-container li.warn::before {
-    color: #F59E0B !important;
-}
-
-.stat-lbl, .trend-down, .trend-up, .stat-num {
+.status-text {
     color: #991B1B !important;
 }
 
-.metric-card {
-    background: #FFFFFF !important;
-    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+.drop-zone {
+    border: 2px dashed #991B1B !important;
 }
 
-.slider-val {
-    color: #1E3A8A !important;
-}
-
-/* Dynamic Classes */
-.text-green {
-    color: #10B981 !important;
-}
-
-.text-indigo {
-    color: #3B82F6 !important;
-}
-
-.text-warning {
-    color: #F59E0B !important;
-}
-
-.text-red {
-    color: #EF4444 !important;
-}
-
-.pulse-green {
-    background-color: #10B981 !important;
-}
-
-/* Logo brand gradients */
-.logo-icon {
-    background: linear-gradient(135deg, #10B981, #1E3A8A) !important;
-}
-
-.logo-icon i {
-    color: white !important;
-}
-
-/* Chart overrides for Light Theme */
+/* Chart bars */
 .chart-bar-fill {
-    background-color: #3B82F6 !important;
+    border: 1px solid #FFEDD5 !important;
 }
 
-.chart-bar-fill.bar-salary {
-    background-color: #10B981 !important;
+/* Gauge circle stroke colors */
+#score-gauge-ring, circle {
+    stroke: #991B1B !important;
 }
 
-.chart-label {
-    color: #4B5563 !important;
+/* Flat design style - remove all shadows, glows, gradients, and backdrop-filters */
+* {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* Text highlights colors */
+.text-green, .text-indigo, .text-warning, .text-red {
+    color: #991B1B !important;
+}
+
+.trend-up, .trend-down {
+    color: #991B1B !important;
 }
 
 
