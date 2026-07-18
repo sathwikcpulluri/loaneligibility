@@ -2114,49 +2114,49 @@ h1, h2, h3, h4, .brand-name {
 }
 
 /* ==========================================================================
-   STRICT DUOTONE THEME OVERRIDES (Background: #FFEDD5, Secondary/Accent/Borders/Text: #991B1B)
+   STRICT MONOCHROME THEME OVERRIDES (Background: #FFFFFF, Primary/Text/Borders: #000000)
    ========================================================================== */
 body, html, .auth-container, .auth-background, .sidebar, .app-header, .glass-card, .kpi-card, .chatbot-container, .chat-input-area, .modal-card, .metric-card, .table td {
-    background-color: #FFEDD5 !important;
-    background: #FFEDD5 !important;
-    color: #991B1B !important;
+    background-color: #FFFFFF !important;
+    background: #FFFFFF !important;
+    color: #000000 !important;
 }
 
 h1, h2, h3, h4, h5, h6, .brand-name, .header-title, .card-title, p, span, div, li, td, th, label, input, select, textarea, i {
-    color: #991B1B !important;
+    color: #000000 !important;
 }
 
-/* Borders and Outlines - using only #991B1B */
+/* Borders and Outlines - using only #000000 */
 .sidebar, .app-header, .glass-card, .kpi-card, .chatbot-container, .chat-input-area, .modal-card, .metric-card, .table th, .table td, .user-profile-card, .role-selector-card, .auth-card, .auth-role-tabs, .social-btn, input, select, textarea, .status-indicator, .drop-zone {
-    border: 1px solid #991B1B !important;
+    border: 1px solid #000000 !important;
 }
 
 .sidebar {
-    border-right: 2px solid #991B1B !important;
+    border-right: 2px solid #000000 !important;
     border-left: none !important;
     border-top: none !important;
     border-bottom: none !important;
 }
 
 .app-header {
-    border-bottom: 2px solid #991B1B !important;
+    border-bottom: 2px solid #000000 !important;
     border-left: none !important;
     border-right: none !important;
     border-top: none !important;
 }
 
 .user-profile-card {
-    border-top: 2px solid #991B1B !important;
+    border-top: 2px solid #000000 !important;
     border-left: none !important;
     border-right: none !important;
     border-bottom: none !important;
 }
 
-/* Dynamic Hover/Active States: Inverted palette (BG #991B1B, Color #FFEDD5) */
+/* Dynamic Hover/Active States: Inverted palette (BG #000000, Color #FFFFFF) */
 .btn-primary, .auth-btn, .chat-send-btn, .social-btn:hover, .table th, .nav-link.active, .toggle-btn.active, .role-tab.active, .method-tab.active, .chat-bubble.user, .badge, .kpi-bar, .progress-bar-fill, .logo-icon, .chart-bar-fill {
-    background-color: #991B1B !important;
-    background: #991B1B !important;
-    color: #FFEDD5 !important;
+    background-color: #000000 !important;
+    background: #000000 !important;
+    color: #FFFFFF !important;
 }
 
 /* Text overrides for inverted elements */
@@ -2170,63 +2170,63 @@ h1, h2, h3, h4, h5, h6, .brand-name, .header-title, .card-title, p, span, div, l
 .method-tab.active span, .method-tab.active i,
 .chat-bubble.user p, .chat-bubble.user span, .chat-bubble.user i,
 .logo-icon i {
-    color: #FFEDD5 !important;
+    color: #FFFFFF !important;
 }
 
 /* Inactive states & buttons with borders */
 .btn-outline {
-    border: 2px solid #991B1B !important;
-    color: #991B1B !important;
+    border: 2px solid #000000 !important;
+    color: #000000 !important;
     background: transparent !important;
 }
 
 .btn-outline:hover {
-    background-color: #991B1B !important;
-    color: #FFEDD5 !important;
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
 }
 
 .btn-outline:hover span, .btn-outline:hover i {
-    color: #FFEDD5 !important;
+    color: #FFFFFF !important;
 }
 
 .nav-link:hover:not(.active) {
-    background-color: rgba(153, 27, 27, 0.1) !important;
-    color: #991B1B !important;
+    background-color: rgba(0, 0, 0, 0.08) !important;
+    color: #000000 !important;
 }
 
 .selector-toggle, .auth-role-tabs, .auth-method-tabs {
-    background-color: #FFEDD5 !important;
+    background-color: #FFFFFF !important;
 }
 
 .chat-bubble.bot {
-    background-color: #FFEDD5 !important;
+    background-color: #FFFFFF !important;
 }
 
 /* Form inputs styling */
 input[type="text"], input[type="password"], input[type="email"], input[type="tel"], select, textarea {
-    background-color: #FFEDD5 !important;
-    color: #991B1B !important;
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
 }
 
 input:focus, select:focus, textarea:focus {
-    background-color: #FFEDD5 !important;
-    border-color: #991B1B !important;
+    background-color: #FFFFFF !important;
+    border-color: #000000 !important;
 }
 
 /* Placeholder styling */
 ::-webkit-input-placeholder {
-    color: rgba(153, 27, 27, 0.6) !important;
+    color: rgba(0, 0, 0, 0.5) !important;
 }
 ::-moz-placeholder {
-    color: rgba(153, 27, 27, 0.6) !important;
+    color: rgba(0, 0, 0, 0.5) !important;
 }
 :-ms-input-placeholder {
-    color: rgba(153, 27, 27, 0.6) !important;
+    color: rgba(0, 0, 0, 0.5) !important;
 }
 
 /* Indicators */
 .pulse-green, .dot {
-    background-color: #991B1B !important;
+    background-color: #000000 !important;
     animation: none !important;
 }
 
@@ -2235,21 +2235,21 @@ input:focus, select:focus, textarea:focus {
 }
 
 .status-text {
-    color: #991B1B !important;
+    color: #000000 !important;
 }
 
 .drop-zone {
-    border: 2px dashed #991B1B !important;
+    border: 2px dashed #000000 !important;
 }
 
 /* Chart bars */
 .chart-bar-fill {
-    border: 1px solid #FFEDD5 !important;
+    border: 1px solid #FFFFFF !important;
 }
 
 /* Gauge circle stroke colors */
 #score-gauge-ring, circle {
-    stroke: #991B1B !important;
+    stroke: #000000 !important;
 }
 
 /* Flat design style - remove all shadows, glows, gradients, and backdrop-filters */
@@ -2262,11 +2262,11 @@ input:focus, select:focus, textarea:focus {
 
 /* Text highlights colors */
 .text-green, .text-indigo, .text-warning, .text-red {
-    color: #991B1B !important;
+    color: #000000 !important;
 }
 
 .trend-up, .trend-down {
-    color: #991B1B !important;
+    color: #000000 !important;
 }
 
 
