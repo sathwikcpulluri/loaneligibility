@@ -104,7 +104,7 @@ h1, h2, h3, h4, .brand-name {
     flex: 1;
     background: none;
     border: none;
-    color: #94A3B8;
+    color: #F97316;
     padding: 8px 4px;
     font-size: 12px;
     font-weight: 500;
@@ -139,7 +139,7 @@ h1, h2, h3, h4, .brand-name {
     display: flex;
     align-items: center;
     gap: 12px;
-    color: #94A3B8;
+    color: #F97316;
     text-decoration: none;
     padding: 12px 16px;
     font-size: 14px;
@@ -259,13 +259,13 @@ h1, h2, h3, h4, .brand-name {
 }
 
 .status-text {
-    color: #94A3B8;
+    color: #F97316;
     font-weight: 500;
 }
 
 .notification-btn {
     font-size: 20px;
-    color: #94A3B8;
+    color: #F97316;
     cursor: pointer;
     position: relative;
     transition: color 0.2s ease;
@@ -401,14 +401,14 @@ h1, h2, h3, h4, .brand-name {
     font-size: 38px;
     line-height: 1.2;
     margin-bottom: 16px;
-    background: linear-gradient(135deg, #FFFFFF 30%, #94A3B8);
+    background: linear-gradient(135deg, #FFFFFF 30%, #F97316);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .hero-desc {
     font-size: 16px;
-    color: #94A3B8;
+    color: #F97316;
     max-width: 700px;
     margin: 0 auto 32px auto;
     line-height: 1.6;
@@ -468,7 +468,7 @@ h1, h2, h3, h4, .brand-name {
 
 .feature-desc {
     font-size: 14px;
-    color: #94A3B8;
+    color: #F97316;
     line-height: 1.5;
 }
 
@@ -512,7 +512,7 @@ h1, h2, h3, h4, .brand-name {
 .price-tier {
     font-size: 14px;
     text-transform: uppercase;
-    color: #94A3B8;
+    color: #F97316;
     letter-spacing: 1px;
     margin-bottom: 12px;
     display: block;
@@ -533,7 +533,7 @@ h1, h2, h3, h4, .brand-name {
 
 .price-desc {
     font-size: 13px;
-    color: #94A3B8;
+    color: #F97316;
     line-height: 1.5;
     margin-bottom: 24px;
     min-height: 40px;
@@ -585,7 +585,7 @@ h1, h2, h3, h4, .brand-name {
 
 .empty-state-notice p {
     font-size: 14px;
-    color: #94A3B8;
+    color: #F97316;
     line-height: 1.6;
     margin-bottom: 24px;
 }
@@ -703,7 +703,7 @@ h1, h2, h3, h4, .brand-name {
 
 .xai-list li {
     font-size: 12px;
-    color: #94A3B8;
+    color: #F97316;
     line-height: 1.5;
     padding-left: 20px;
     position: relative;
@@ -742,7 +742,7 @@ h1, h2, h3, h4, .brand-name {
 
 .kpi-label {
     font-size: 12px;
-    color: #94A3B8;
+    color: #F97316;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     font-weight: 500;
@@ -909,7 +909,7 @@ h1, h2, h3, h4, .brand-name {
 .step-name {
     font-size: 14px;
     font-weight: 500;
-    color: #94A3B8;
+    color: #F97316;
 }
 
 .step-line.active .step-name {
@@ -1114,7 +1114,7 @@ h1, h2, h3, h4, .brand-name {
 
 .slider-label {
     font-size: 14px;
-    color: #94A3B8;
+    color: #F97316;
     font-weight: 500;
 }
 
@@ -1182,7 +1182,7 @@ h1, h2, h3, h4, .brand-name {
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    color: #94A3B8;
+    color: #F97316;
     font-weight: 600;
 }
 
@@ -1210,7 +1210,7 @@ h1, h2, h3, h4, .brand-name {
 }
 
 .detail-row span {
-    color: #94A3B8;
+    color: #F97316;
 }
 
 .detail-row strong {
@@ -1278,7 +1278,7 @@ h1, h2, h3, h4, .brand-name {
 
 .metric-lbl {
     font-size: 11px;
-    color: #94A3B8;
+    color: #F97316;
     text-transform: uppercase;
 }
 
@@ -1403,7 +1403,7 @@ h1, h2, h3, h4, .brand-name {
 .chip {
     background-color: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    color: #94A3B8;
+    color: #F97316;
     padding: 6px 14px;
     font-size: 11px;
     border-radius: 20px;
@@ -1479,7 +1479,7 @@ h1, h2, h3, h4, .brand-name {
 
 .stat-lbl {
     font-size: 12px;
-    color: #94A3B8;
+    color: #F97316;
     text-transform: uppercase;
 }
 
@@ -1577,7 +1577,7 @@ h1, h2, h3, h4, .brand-name {
 
 .block-lbl {
     font-size: 11px;
-    color: #94A3B8;
+    color: #F97316;
     display: block;
     margin-bottom: 6px;
 }
@@ -1620,7 +1620,7 @@ h1, h2, h3, h4, .brand-name {
 }
 
 .detail-item span {
-    color: #94A3B8;
+    color: #F97316;
 }
 
 .detail-item strong {
@@ -1638,7 +1638,7 @@ h1, h2, h3, h4, .brand-name {
 
 .form-label {
     font-size: 12px;
-    color: #94A3B8;
+    color: #F97316;
     font-weight: 500;
 }
 
@@ -1716,7 +1716,7 @@ h1, h2, h3, h4, .brand-name {
 
 .modal-card p {
     font-size: 14px;
-    color: #94A3B8;
+    color: #F97316;
     line-height: 1.5;
     margin-bottom: 8px;
 }
@@ -1932,7 +1932,7 @@ h1, h2, h3, h4, .brand-name {
 .form-group label {
     display: block;
     font-size: 12px;
-    color: #94A3B8;
+    color: #F97316;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 8px;
@@ -2486,5 +2486,6 @@ input:focus, select:focus, textarea:focus {
 .chart-label {
     color: #4B5563 !important;
 }
+
 
 
